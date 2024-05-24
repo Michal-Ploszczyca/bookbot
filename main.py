@@ -26,15 +26,17 @@ def get_num_letters(text):
             char_count[char] += 1
         else:
             char_count[char] = 1
-    sort_char_count = list(char_count.values())
-    sort_char_count.sort()
-    dict(sort_char_count)
-    for key, value in sort_char_count():
-        print(f"The '{key}' character was found {value} times")
-    print("--- End report ---")
-    return char_count
-    
 
-    # print(to_lower)
+
+    char_list = []
+    for char, count in char_count.items():
+        # Create a dictionary fo each key-value pair
+        if char.isalpha():
+            char_list.append({"character": char, "num": count})
+
+    char_list.sort(reverse=True, key=lambda x: x["num"])
+    # print(char_list)
+    for item in char_list:
+        print(f"The '{item["character"]}' character was found {item["num"]} times")
 
 main()
